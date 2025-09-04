@@ -1,27 +1,7 @@
 ﻿Console.Clear();
 
-int value = 1;
+var fahrenheit = 94;
+var celsius = (fahrenheit - 32) * 5.0 / 9.0;
 
-value = value + 1;
-Console.WriteLine("First increment: " + value);
+Console.WriteLine("La temperatura es de " + celsius.ToString("F1") + " Celsius.");
 
-value += 1;
-Console.WriteLine("Second increment: " + value);
-
-value++;
-Console.WriteLine("Third increment: " + value);
-
-value = value - 1;
-Console.WriteLine("First decrement: " + value);
-
-value -= 1;
-Console.WriteLine("Second decrement: " + value);
-
-Console.WriteLine();
-
-value = 1;
-value++;
-Console.WriteLine("First: " + value);
-Console.WriteLine($"Second: {value++}");
-Console.WriteLine("Third: " + value);
-Console.WriteLine("Fourth: " + (++value));
