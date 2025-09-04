@@ -1,33 +1,27 @@
 ﻿Console.Clear();
 
-var suma = 7 + 5;
-var resta = 7 - 5;
-var multiplicacion = 7 * 5;
-var division = 7 / 5;
+int value = 1;
 
-Console.WriteLine("Suma: " + suma);
-Console.WriteLine("Resta: " + resta);
-Console.WriteLine("Multiplicación: " + multiplicacion);
-Console.WriteLine("División: " + division);
+value = value + 1;
+Console.WriteLine("First increment: " + value);
 
+value += 1;
+Console.WriteLine("Second increment: " + value);
 
-var divivendo = 233;
-var divisor = 5;
-var divisionDecimal = (decimal)divivendo / divisor;
-Console.WriteLine("División decimal: " + divisionDecimal);
-Console.WriteLine("Resto: " + (decimal)divivendo % divisor);  
+value++;
+Console.WriteLine("Third increment: " + value);
 
-/*PEMDAS
-Parentesis
-Exponentes
-Multiplicación
-División
-Suma y resta
+value = value - 1;
+Console.WriteLine("First decrement: " + value);
 
-de izquierda a derecha
-*/
+value -= 1;
+Console.WriteLine("Second decrement: " + value);
 
-int value1 = 3 + 4 * 5;
-int value2 = (3 + 4) * 5;
-Console.WriteLine(value1);
-Console.WriteLine(value2);
+Console.WriteLine();
+
+value = 1;
+value++;
+Console.WriteLine("First: " + value);
+Console.WriteLine($"Second: {value++}");
+Console.WriteLine("Third: " + value);
+Console.WriteLine("Fourth: " + (++value));
