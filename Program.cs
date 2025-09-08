@@ -1,10 +1,9 @@
 ﻿Console.Clear();
 
-var numero = 7;
-var texto = "siete";
+int firstValue = 500;
+int secondValue = 600;
+int largerValue;
 
-Console.WriteLine(numero);
-Console.WriteLine(texto);
-Console.WriteLine();
+largerValue = Math.Max(firstValue, secondValue);
 
-
+Console.WriteLine(largerValue);
