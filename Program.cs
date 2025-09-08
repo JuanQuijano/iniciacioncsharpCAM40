@@ -1,6 +1,16 @@
-﻿Console.Clear();
+﻿using System;
+Console.Clear();
 
-var saleAmount = 999;
-var discount = (saleAmount > 1000) ? 100 : 50;
+string permission = "Admin";
+int level = 87;
 
-Console.WriteLine($"Discount: {discount}");
+var role = permission.Contains("Admin") ? "Admin" : permission.Contains("Manager") ? "Manager" : "None";
+
+var mensaje = role switch
+{
+    "Admin" => level > 55 ? "Welcome, Super Admin user." : "Welcome, Admin user.",
+    "Manager" => level > 20 ? "Contact an Admin for access." : "You do not have sufficient privileges.",
+    _ => "You do not have sufficient privileges."
+};
+
+Console.WriteLine(mensaje);
