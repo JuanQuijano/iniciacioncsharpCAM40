@@ -1,14 +1,11 @@
 ﻿Console.Clear();
 
-int[] inventario = [200, 450, 700, 175, 250];
+string[] pedidoIds = ["B123", "C234", "A345", "C15", "B177", "G3003", "C235", "B179"];
 
-var sum = 0;
-int numContenedores = 0;
-foreach (var item in inventario)
+foreach (string id in pedidoIds)
 {
-    sum += item;
-    numContenedores++;
-    Console.WriteLine($"El contenedor {numContenedores} tiene {item} items. Habiendo un total de {sum} items en el inventario.");
+    if (id.StartsWith('B'))
+    {
+        Console.WriteLine(id);
+    }
 }
-
-Console.WriteLine($"Tengo {sum} items en el inventario, almacenados en {numContenedores} contenedores.");
