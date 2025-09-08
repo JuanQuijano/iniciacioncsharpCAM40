@@ -2,15 +2,14 @@
 
 int examAssignments = 5;
 
-string[] studentNames = new string[] { "Sophia", "Andrew", "Emma", "Logan", "Pepe" };
-
-int[][] studentScoresMatrix = new int[][]
+// single collection of students as tuples (Name, Scores). Add a new entry to extend.
+var students = new (string Name, int[] Scores)[]
 {
-    [90, 86, 87, 98, 100, 94, 90],        // Sophia
-    [92, 89, 81, 96, 90, 89],              // Andrew
-    [90, 85, 87, 98, 68, 89, 89, 89],      // Emma
-    [90, 95, 87, 88, 96, 96],
-    [67, 55, 99, 23, 78, 79, 15, 99, 99]
+    ("Sophia", new int[] { 90, 86, 87, 98, 100, 94, 90 }),
+    ("Andrew", new int[] { 92, 89, 81, 96, 90, 89 }),
+    ("Emma", new int[] { 90, 85, 87, 98, 68, 89, 89, 89 }),
+    ("Logan", new int[] { 90, 95, 87, 88, 96, 96 }),
+    ("Pepe", new int[] { 67, 55, 99, 23, 78, 79, 15, 99, 99 })
 };
 string currentStudentLetterGrade = "";
 
@@ -26,10 +25,10 @@ The outer foreach loop is used to:
 - calculate numeric and letter grade
 - write the score report information
 */
-for (int i = 0; i < studentNames.Length; i++)
+foreach (var student in students)
 {
-    string currentStudent = studentNames[i];
-    int[] studentScores = studentScoresMatrix[i];
+    string currentStudent = student.Name;
+    int[] studentScores = student.Scores;
 
     int sumExamScores = 0;
     int sumExtraScores = 0;
