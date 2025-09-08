@@ -1,16 +1,13 @@
 ﻿using System;
 Console.Clear();
 
-string permission = "Admin";
-int level = 87;
-
-var role = permission.Contains("Admin") ? "Admin" : permission.Contains("Manager") ? "Manager" : "None";
-
-var mensaje = role switch
+bool flag = true;
+if (flag)
 {
-    "Admin" => level > 55 ? "Welcome, Super Admin user." : "Welcome, Admin user.",
-    "Manager" => level > 20 ? "Contact an Admin for access." : "You do not have sufficient privileges.",
-    _ => "You do not have sufficient privileges."
-};
+    int value = 10;
+    Console.WriteLine($"{flag}");
+    Console.WriteLine($"Inside the code block: {value}");
+}
 
-Console.WriteLine(mensaje);
+// Console.WriteLine($"Inside the code block: {value}");
+Console.WriteLine($"{flag}");
