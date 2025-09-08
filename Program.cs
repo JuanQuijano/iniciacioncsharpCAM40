@@ -1,14 +1,14 @@
 ﻿Console.Clear();
 
-string[] fraudulentOrderIDs = ["A123", "B456", "C789", "D012" ];
+int[] inventario = [200, 450, 700, 175, 250];
 
-Console.WriteLine(fraudulentOrderIDs[0]);
-Console.WriteLine(fraudulentOrderIDs[1]);
-Console.WriteLine(fraudulentOrderIDs[2]);
-Console.WriteLine(fraudulentOrderIDs[3]);
+var sum = 0;
+int numContenedores = 0;
+foreach (var item in inventario)
+{
+    sum += item;
+    numContenedores++;
+    Console.WriteLine($"El contenedor {numContenedores} tiene {item} items. Habiendo un total de {sum} items en el inventario.");
+}
 
-fraudulentOrderIDs[0] = "F000";
-
-Console.WriteLine($"Existen {fraudulentOrderIDs.Length} ordenes fraudulentas para procesar.");
-
-Console.WriteLine(fraudulentOrderIDs[fraudulentOrderIDs.Length-1]);
+Console.WriteLine($"Tengo {sum} items en el inventario, almacenados en {numContenedores} contenedores.");
