@@ -1,5 +1,10 @@
 ﻿Console.Clear();
 
-Random dado = new();
-var tirada = dado.Next(1, 7);
-Console.WriteLine("Has sacado un " + tirada);
+var numero = 7;
+var texto = "siete";
+
+Console.WriteLine(numero);
+Console.WriteLine(texto);
+Console.WriteLine();
+
+
