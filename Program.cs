@@ -2,33 +2,24 @@
 
 Console.Clear();
 
-var numero = 0; ;
-var entrada = string.Empty;
-var salida = false;
+Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
 
-Console.WriteLine("Introduce un valor entero entre 5 y 10");
+var input = string.Empty;
+var normalized = string.Empty;
+var validRole = false;
 
-while (salida == false)
+do
 {
-    var mensaje = string.Empty;
-    entrada = Console.ReadLine();
-    salida = int.TryParse(entrada, out numero);
+    input = Console.ReadLine();
+    normalized = (input != null) ? input.Trim().ToLower() : string.Empty;
+    validRole = normalized == "administrator" || normalized == "manager" || normalized == "user";
 
-    if (salida)
+    if (!validRole)
     {
-        if (!(numero >= 5 && numero <= 10))
-        {
-            salida = false;
-            mensaje = $"El número {numero} no está en el rango permitido. Ingresa un número entre 5 y 10.";
-        }
+        Console.WriteLine($"The role name that you entered, \"{input}\" is not valid. Enter your role name (Administrator, Manager, or User)");
     }
-    else
-    { mensaje = "Lo siento, ingresaste un número no válido, intenta de nuevo"; }
 
-    if (mensaje != string.Empty)
-        Console.WriteLine(mensaje);
-}
+} while (!validRole);
 
-Console.WriteLine($"Su valor de entrada ({numero}) ha sido aceptado.");
-
+Console.WriteLine($"Your input value ({input.Trim()}) has been accepted.");
 
