@@ -1,25 +1,25 @@
 ﻿Console.Clear();
 
-var fruit = "orange";
-var mensaje = string.Empty;
+var employeeLevel = 100;
+var employeeName = "John Smith";
+var title = string.Empty;
 
-switch (fruit)
+switch (employeeLevel)
 {
-    case "apple":
-        mensaje = "App will display information for apple.";
+    case 100:
         break;
-
-    case "banana":
-        mensaje = "App will display information for banana.";
+    case 200:
+        title = "Senior Associate";
         break;
-
-    case "cherry":
-        mensaje = "App will display information for cherry.";
+    case 300:
+        title = "Manager";
         break;
-
+    case 400:
+        title = "Senior Manager";
+        break;
     default:
-        mensaje = "App will display information for a fruit not listed.";
+        title = "Associate";
         break;
 }
 
- Console.WriteLine(mensaje);
+Console.WriteLine($"{employeeName}, {title}");
