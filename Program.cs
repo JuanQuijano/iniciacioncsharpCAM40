@@ -1,20 +1,26 @@
 ﻿Console.Clear();
 
-var random = new Random();
-var current = 7;
+var ataque = new Random();
+var saludHeroe = 10;
+var saludMonstruo = 10;
+var mensaje = string.Empty;
 
-do
+
+while (saludHeroe > 0 && saludMonstruo > 0)
 {
-    //current = random.Next(1, 11);
-    Console.WriteLine(current);
-} while (current != 7);
+    var danoHeroe = ataque.Next(1, 11);
+    saludMonstruo -= danoHeroe;
+    mensaje = $"Ataque del hero le hace {danoHeroe} puntos de daño al monstruo, que ahora tiene {saludMonstruo} de salud.";
+    Console.WriteLine(mensaje);
 
-
-Console.WriteLine("----------");
-
-while (current != 7)
-{
-    //current = random.Next(1, 11);
-    Console.WriteLine(current);
+    if (saludMonstruo > 0)
+    {
+        var danoMonstruo = ataque.Next(1, 11);
+        saludHeroe -= danoMonstruo;
+        mensaje = $"Ataque del monstruo le hace {danoMonstruo} puntos de daño al heroe, que ahora tiene {saludHeroe} de salud.";
+        Console.WriteLine(mensaje);
+    }
 }
-Console.WriteLine($"Last number: {current}");
+
+mensaje = (saludHeroe > 0) ? "¡Héroe gana!" : "¡Monstruo gana!";
+Console.WriteLine(mensaje);
