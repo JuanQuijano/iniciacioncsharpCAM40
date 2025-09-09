@@ -1,44 +1,8 @@
 ﻿Console.Clear();
-/*
-for (var indice = 0; indice < 10; indice++)
+
+for (int i = 1; i <= 100; i++)
 {
-    Console.WriteLine(indice);
+    var suffix = (i % 3 == 0 ? "Fizz" : string.Empty) + (i % 5 == 0 ? "Buzz" : string.Empty);
+    Console.WriteLine($"{i} {suffix}");
 }
 
-for (int i = 10; i >= 0; i--)
-{
-    Console.WriteLine(i);
-}
-
-for (int i = 0; i < 10; i += 3)
-{
-    Console.WriteLine(i);
-}
-
-for (int i = 0; i < 10; i++)
-{
-    Console.WriteLine(i);
-    if (i == 7) break;
-}
-
-string[] names = ["Alex", "Eddie", "David", "Michael"];
-for (var i = names.Length - 1; i >= 0; i--)
-{
-    Console.WriteLine(names[i]);
-}
-*/
-var i = 0;
-
-string[] names = { "Alex", "Eddie", "David", "Michael" };
-for (i = 0; i < names.Length; i++)
-    if (names[i] == "David") names[i] = "Sammy";
-
-i = 0;
-foreach (var name in names)
-{
-    if (name == "Sammy")
-        names[i] = "Pepe";
-    
-    Console.WriteLine(name);
-    i++;
-}
