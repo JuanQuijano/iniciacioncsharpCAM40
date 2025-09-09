@@ -1,26 +1,34 @@
-﻿Console.Clear();
+﻿using System;
 
-var ataque = new Random();
-var saludHeroe = 10;
-var saludMonstruo = 10;
-var mensaje = string.Empty;
+Console.Clear();
 
+var numero = 0; ;
+var entrada = string.Empty;
+var salida = false;
 
-while (saludHeroe > 0 && saludMonstruo > 0)
+Console.WriteLine("Introduce un valor entero entre 5 y 10");
+
+while (salida == false)
 {
-    var danoHeroe = ataque.Next(1, 11);
-    saludMonstruo -= danoHeroe;
-    mensaje = $"Ataque del hero le hace {danoHeroe} puntos de daño al monstruo, que ahora tiene {saludMonstruo} de salud.";
-    Console.WriteLine(mensaje);
+    var mensaje = string.Empty;
+    entrada = Console.ReadLine();
+    salida = int.TryParse(entrada, out numero);
 
-    if (saludMonstruo > 0)
+    if (salida)
     {
-        var danoMonstruo = ataque.Next(1, 11);
-        saludHeroe -= danoMonstruo;
-        mensaje = $"Ataque del monstruo le hace {danoMonstruo} puntos de daño al heroe, que ahora tiene {saludHeroe} de salud.";
-        Console.WriteLine(mensaje);
+        if (!(numero >= 5 && numero <= 10))
+        {
+            salida = false;
+            mensaje = $"El número {numero} no está en el rango permitido. Ingresa un número entre 5 y 10.";
+        }
     }
+    else
+    { mensaje = "Lo siento, ingresaste un número no válido, intenta de nuevo"; }
+
+    if (mensaje != string.Empty)
+        Console.WriteLine(mensaje);
 }
 
-mensaje = (saludHeroe > 0) ? "¡Héroe gana!" : "¡Monstruo gana!";
-Console.WriteLine(mensaje);
+Console.WriteLine($"Su valor de entrada ({numero}) ha sido aceptado.");
+
+
