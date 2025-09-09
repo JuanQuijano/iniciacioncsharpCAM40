@@ -2,24 +2,12 @@
 
 Console.Clear();
 
-Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+Console.WriteLine("Procesando las cadenas...");
+string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
 
-var input = string.Empty;
-var normalized = string.Empty;
-var validRole = false;
+foreach (var frase in myStrings[0].Split('.'))
+{ Console.WriteLine(frase.Trim()); }
 
-do
-{
-    input = Console.ReadLine();
-    normalized = (input != null) ? input.Trim().ToLower() : string.Empty;
-    validRole = normalized == "administrator" || normalized == "manager" || normalized == "user";
-
-    if (!validRole)
-    {
-        Console.WriteLine($"The role name that you entered, \"{input}\" is not valid. Enter your role name (Administrator, Manager, or User)");
-    }
-
-} while (!validRole);
-
-Console.WriteLine($"Your input value ({input.Trim()}) has been accepted.");
+Console.WriteLine(myStrings[1]);
+Console.WriteLine("Proceso completado.");
 
