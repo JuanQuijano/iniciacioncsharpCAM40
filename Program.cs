@@ -1,18 +1,25 @@
 ﻿Console.Clear();
 
-int[] numbers = [4, 8, 15, 16, 23, 42];
-var total = 0;
-var found = false;
+var fruit = "orange";
+var mensaje = string.Empty;
 
-foreach (int number in numbers)
+switch (fruit)
 {
-    total += number;
+    case "apple":
+        mensaje = "App will display information for apple.";
+        break;
 
-    if (number == 42)
-        found = true;
+    case "banana":
+        mensaje = "App will display information for banana.";
+        break;
+
+    case "cherry":
+        mensaje = "App will display information for cherry.";
+        break;
+
+    default:
+        mensaje = "App will display information for a fruit not listed.";
+        break;
 }
 
-if (found)
-    Console.WriteLine("Set contains 42");
-
-Console.WriteLine($"Total: {total}");
+ Console.WriteLine(mensaje);
