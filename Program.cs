@@ -1,8 +1,20 @@
 ﻿Console.Clear();
 
-for (int i = 1; i <= 100; i++)
-{
-    var suffix = (i % 3 == 0 ? "Fizz" : string.Empty) + (i % 5 == 0 ? "Buzz" : string.Empty);
-    Console.WriteLine($"{i} {suffix}");
-}
+var random = new Random();
+var current = 7;
 
+do
+{
+    //current = random.Next(1, 11);
+    Console.WriteLine(current);
+} while (current != 7);
+
+
+Console.WriteLine("----------");
+
+while (current != 7)
+{
+    //current = random.Next(1, 11);
+    Console.WriteLine(current);
+}
+Console.WriteLine($"Last number: {current}");
