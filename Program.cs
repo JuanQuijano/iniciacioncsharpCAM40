@@ -1,19 +1,11 @@
-﻿using System;
+﻿Console.Clear();
 
-Console.Clear();
+string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+string[] orders = orderStream.Split(',');
+Array.Sort(orders);
 
-string pangram = "The quick brown fox jumps over the lazy dog";
-string[] words = pangram.Split(' ');
-string[] reversedWords = new string[words.Length];
-
-for (int i = 0; i < words.Length; i++)
+foreach (string order in orders)
 {
-    char[] chars = words[i].ToCharArray();
-    Array.Reverse(chars);
-    reversedWords[i] = new string(chars);
+    var mensaje = (order.Length != 4) ? $"{order} \t- Error" : $"{order}";
+    Console.WriteLine(mensaje);
 }
-
-string resultado = string.Join(" ", reversedWords);
-Console.WriteLine(resultado);
-
-// ehT kciuq nworb xof spmuj revo eht yzal god
