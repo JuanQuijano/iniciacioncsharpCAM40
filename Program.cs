@@ -287,15 +287,132 @@ do
 
         case "3":
             // Ensure animal ages and physical descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
-            Console.WriteLine("Press the Enter key to continue.");
+            // Iterate through ourAnimals, skip default (empty) entries
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    // show the ID field (for example: "ID #: c4") when prompting
+                    string idField = ourAnimals[i, 0];
+
+                    // --- Ensure a valid numeric age is assigned ---
+                    // Extract current age value (strip prefix)
+                    string currentAge = ourAnimals[i, 2].Replace("Age: ", "");
+                    bool needAge = true;
+                    if (!string.IsNullOrEmpty(currentAge) && currentAge != "?")
+                    {
+                        // if it already parses as integer, we don't need to prompt
+                        if (int.TryParse(currentAge, out int _))
+                        {
+                            needAge = false;
+                        }
+                    }
+
+                    while (needAge)
+                    {
+                        Console.WriteLine($"Enter an age for {idField}");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            // must be convertible to an integer
+                            if (int.TryParse(readResult, out petAge))
+                            {
+                                ourAnimals[i, 2] = "Age: " + petAge.ToString();
+                                needAge = false;
+                            }
+                            else
+                            {
+                                // invalid entry -> loop will repeat prompt
+                            }
+                        }
+                    }
+
+                    // --- Ensure a valid physical description is assigned ---
+                    string currentPhys = ourAnimals[i, 4].Replace("Physical description: ", "");
+                    bool needPhys = string.IsNullOrEmpty(currentPhys) || currentPhys.Trim().Length == 0 || currentPhys.Trim().ToLower() == "tbd";
+
+                    while (needPhys)
+                    {
+                        Console.WriteLine($"Enter a physical description for {idField} (size, color, breed, gender, weight, housebroken)");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            if (readResult.Trim().Length > 0)
+                            {
+                                ourAnimals[i, 4] = "Physical description: " + readResult;
+                                needPhys = false;
+                            }
+                            else
+                            {
+                                // empty input -> repeat
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Age and physical description fields are complete for all of our friends. ");
+            Console.WriteLine("Press the Enter key to continue");
             readResult = Console.ReadLine();
             break;
 
         case "4":
             // Ensure animal nicknames and personality descriptions are complete
-            Console.WriteLine("Challenge Project - please check back soon to see progress.");
-            Console.WriteLine("Press the Enter key to continue.");
+            // Iterate through ourAnimals, skip default (empty) entries
+            for (int i = 0; i < maxPets; i++)
+            {
+                if (ourAnimals[i, 0] != "ID #: ")
+                {
+                    string idField = ourAnimals[i, 0];
+
+                    // --- Ensure a valid nickname is assigned ---
+                    string currentNick = ourAnimals[i, 3].Replace("Nickname: ", "");
+                    bool needNick = string.IsNullOrEmpty(currentNick) || currentNick.Trim().Length == 0 || currentNick.Trim().ToLower() == "tbd";
+
+                    while (needNick)
+                    {
+                        Console.WriteLine($"Enter a nickname for {idField}");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            if (readResult.Trim().Length > 0)
+                            {
+                                ourAnimals[i, 3] = "Nickname: " + readResult;
+                                needNick = false;
+                            }
+                            else
+                            {
+                                // empty input -> repeat
+                            }
+                        }
+                    }
+
+                    // --- Ensure a valid personality description is assigned ---
+                    string currentPersonality = ourAnimals[i, 5].Replace("Personality: ", "");
+                    bool needPersonality = string.IsNullOrEmpty(currentPersonality) || currentPersonality.Trim().Length == 0 || currentPersonality.Trim().ToLower() == "tbd";
+
+                    while (needPersonality)
+                    {
+                        Console.WriteLine($"Enter a description of the pet's personality for {idField} (likes or dislikes, tricks, energy level)");
+                        readResult = Console.ReadLine();
+                        if (readResult != null)
+                        {
+                            if (readResult.Trim().Length > 0)
+                            {
+                                ourAnimals[i, 5] = "Personality: " + readResult;
+                                needPersonality = false;
+                            }
+                            else
+                            {
+                                // empty input -> repeat
+                            }
+                        }
+                    }
+                }
+            }
+
+            Console.WriteLine("Nickname and personality fields are complete for all of our friends.");
+            Console.WriteLine("Press the Enter key to continue");
             readResult = Console.ReadLine();
             break;
 
