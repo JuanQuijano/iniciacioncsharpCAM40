@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Globalization;
+Console.Clear();
 
 // ourAnimals array will store the following: 
 string animalSpecies = "";
@@ -14,6 +16,11 @@ int maxPets = 8;
 string? readResult;
 string menuSelection = "";
 decimal decimalDonation = 0.00m;
+
+// Establecer la cultura por defecto del hilo para formateo (por ejemplo, moneda)
+// Esto asegura un símbolo de moneda consistente en toda la aplicación.
+CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
+CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
 // array used to store runtime data
 string[,] ourAnimals = new string[maxPets, 7];
@@ -172,8 +179,8 @@ do
                 // combined description for searching (lowercase for case-insensitive compare)
                 string dogDescription = "";
 
-                // #4 update to "rotating" animation with countdown
-                string[] searchingIcons = { ".  ", ".. ", "..." };
+                // #4 update to "rotating" animation with countdown (spinner)
+                string[] searchingIcons = new string[] { "|", "/", "-", "\\" };
 
                 // friendly display of the search terms
                 string joinedTermsForDisplay = string.Join(", ", terms);
@@ -186,17 +193,19 @@ do
                         // Search combined descriptions and report results
                         dogDescription = (ourAnimals[i, 4] + " " + ourAnimals[i, 5]).ToLower();
 
-                        for (int j = 5; j > -1; j--)
+                        // #5 spinner animation with countdown (2,1,0)
+                        string displayNameForAnim = ourAnimals[i, 3].Replace("Nickname: ", "").Trim();
+                        for (int countdown = 2; countdown >= 0; countdown--)
                         {
-                            // #5 update "searching" message to show countdown
                             foreach (string icon in searchingIcons)
                             {
-                                Console.Write($"\rsearching our dog {ourAnimals[i, 3]} for {joinedTermsForDisplay} {icon}");
-                                Thread.Sleep(250);
+                                Console.Write($"\rsearching our dog {displayNameForAnim} for {joinedTermsForDisplay} {icon} {countdown}");
+                                Thread.Sleep(200);
                             }
-
-                            Console.Write($"\r{new String(' ', Console.BufferWidth)}");
                         }
+
+                        // clear the line after animation stops
+                        Console.Write("\r" + new string(' ', Console.BufferWidth) + "\r");
 
                         bool thisDogMatched = false;
 
