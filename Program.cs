@@ -1,32 +1,19 @@
-﻿Console.Clear();
+﻿using System;
 
-string[] pallets = [ "B14", "A11", "B12", "A13" ];
-Console.WriteLine("");
+Console.Clear();
 
-Array.Clear(pallets, 0, 2);
-Console.WriteLine($"Clearing 2 ... count: {pallets.Length}");
-foreach (var pallet in pallets)
+string pangram = "The quick brown fox jumps over the lazy dog";
+string[] words = pangram.Split(' ');
+string[] reversedWords = new string[words.Length];
+
+for (int i = 0; i < words.Length; i++)
 {
-    Console.WriteLine($"-- {pallet}");
+    char[] chars = words[i].ToCharArray();
+    Array.Reverse(chars);
+    reversedWords[i] = new string(chars);
 }
 
-Console.WriteLine("");
-Array.Resize(ref pallets, 6);
-Console.WriteLine($"Resizing 6 ... count: {pallets.Length}");
+string resultado = string.Join(" ", reversedWords);
+Console.WriteLine(resultado);
 
-pallets[4] = "C01";
-pallets[5] = "C02";
-
-foreach (var pallet in pallets)
-{
-    Console.WriteLine($"-- {pallet}");
-}
-
-Console.WriteLine("");
-Array.Resize(ref pallets, 3);
-Console.WriteLine($"Resizing 3 ... count: {pallets.Length}");
-
-foreach (var pallet in pallets)
-{
-    Console.WriteLine($"-- {pallet}");
-}
+// ehT kciuq nworb xof spmuj revo eht yzal god
