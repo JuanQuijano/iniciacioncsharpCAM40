@@ -4,25 +4,16 @@ Console.Clear();
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
-int[] numeros = [1,2,3,4,5];
 
-Console.WriteLine("Contents of Array:");
-PrintArray();
-
-void PrintArray()
+void DisplayRandomNumbers()
 {
-    foreach (var numero in numeros)
+    var random = new Random();
+    for (int i = 0; i < 10; i++)
     {
-        Console.Write($"{numero} ");
-    }
+        Console.WriteLine($"La tirada ha sido de: {random.Next(1, 101)} puntos.");
+    } 
     Console.WriteLine();
 }
 
-Console.WriteLine("Before calling a method");
-SayHello();
-Console.WriteLine("After calling a method");
-
-void SayHello() 
-{
-    Console.WriteLine("Hello World!");
-}
+Console.WriteLine("Generating random numbers:");
+DisplayRandomNumbers();
