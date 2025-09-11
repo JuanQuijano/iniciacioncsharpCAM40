@@ -4,48 +4,33 @@ Console.Clear();
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
-string[] guestList = { "Rebecca", "Nadia", "Noor", "Jonte" };
-string[] rsvps = new string[10];
-int count = 0;
-
-
-RSVP("Rebecca");
-RSVP("Nadia", 2, "Nuts");
-RSVP(name: "Linh", partySize: 2, inviteOnly: false);
-RSVP("Tony", allergies: "Jackfruit", inviteOnly: true);
-RSVP("Noor", 4, inviteOnly: false);
-RSVP("Jonte", 2, "Stone fruit", false);
-ShowRSVPs();
-
-
-void RSVP(string name, int partySize = 1, string allergies = "none", bool inviteOnly = true)
+string[,] corporate = 
 {
-    if (inviteOnly)
-    {
-        bool found = false;
-        foreach (string guest in guestList)
-        {
-            if (guest.Equals(name))
-            {
-                found = true;
-                break;
-            }
-        }
-        if (!found)
-        {
-            Console.WriteLine($"Sorry, {name} is not on the guest list");
-            return;
-        }
-    }
+    {"Robert", "Bavin"}, {"Simon", "Bright"},
+    {"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
+    {"Sarah", "Delucchi"}, {"Sinan", "Ali"}
+};
 
-    rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
-    count++;
-}
-void ShowRSVPs()
+string[,] external = 
 {
-    Console.WriteLine("\nTotal RSVPs:");
-    for (int i = 0; i < count; i++)
+    {"Vinnie", "Ashton"}, {"Cody", "Dysart"},
+    {"Shay", "Lawrence"}, {"Daren", "Valdes"}
+};
+string externalDomain = "hayworth.com";
+
+ShowEmailAddresses(corporate);
+ShowEmailAddresses(external, externalDomain);
+
+static void ShowEmailAddresses(string[,] employees, string domain = "contoso.com")
+{
+    for (int i = 0; i < employees.GetLength(0); i++)
     {
-        Console.WriteLine(rsvps[i]);
+        string firstName = employees[i, 0];
+        string lastName = employees[i, 1];
+
+        string userPrefix = firstName.Length >= 2 ? firstName.Substring(0, 2) : firstName;
+        string user = (userPrefix + lastName).ToLowerInvariant();
+
+        Console.WriteLine($"{user}@{domain}");
     }
 }
