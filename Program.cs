@@ -4,30 +4,48 @@ Console.Clear();
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
+string[] guestList = { "Rebecca", "Nadia", "Noor", "Jonte" };
+string[] rsvps = new string[10];
+int count = 0;
 
-int[] schedule = [800, 1200, 1600, 2000];
-var diff = 0;
 
-AdjusteTimes(6, -6);
-DisplayTimes();
+RSVP("Rebecca");
+RSVP("Nadia", 2, "Nuts");
+RSVP(name: "Linh", partySize: 2, inviteOnly: false);
+RSVP("Tony", allergies: "Jackfruit", inviteOnly: true);
+RSVP("Noor", 4, inviteOnly: false);
+RSVP("Jonte", 2, "Stone fruit", false);
+ShowRSVPs();
 
-void AdjusteTimes(int currentGMT, int newGMT)
+
+void RSVP(string name, int partySize = 1, string allergies = "none", bool inviteOnly = true)
 {
-
-    if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
-    { Console.WriteLine("Invalid GMT"); }
-    else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
-    { diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT)); }
-    else
-    { diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT)); }
-
-
-}
-void DisplayTimes()
-{
-    for (int i = 0; i < schedule.Length; i++)
+    if (inviteOnly)
     {
-        int newTime = (schedule[i] + diff) % 2400;
-        Console.WriteLine($"{schedule[i]} -> {newTime}");
+        bool found = false;
+        foreach (string guest in guestList)
+        {
+            if (guest.Equals(name))
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            Console.WriteLine($"Sorry, {name} is not on the guest list");
+            return;
+        }
+    }
+
+    rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+    count++;
+}
+void ShowRSVPs()
+{
+    Console.WriteLine("\nTotal RSVPs:");
+    for (int i = 0; i < count; i++)
+    {
+        Console.WriteLine(rsvps[i]);
     }
 }
