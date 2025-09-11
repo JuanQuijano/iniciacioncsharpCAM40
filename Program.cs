@@ -5,37 +5,46 @@ Console.Clear();
 CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
+Random random = new Random();
 
 
-
-int target = 60;
-int[] coins = new int[] {5, 5, 50, 25, 25, 10, 5};
-int[] result = TwoCoins(coins, target);
-
-
-if (result.Length == 0)
+if (ShouldPlay())
 {
-    Console.WriteLine("No two coins make change");
-}
-else
-{
-    Console.WriteLine($"Change found at positions {result[0]} and {result[1]}");
+    PlayGame();
 }
 
-
-
-int[] TwoCoins(int[] coins, int target)
+void PlayGame()
 {
-    for (int curr = 0; curr < coins.Length; curr++)
+    var play = true;
+
+    while (play)
     {
-        for (int next = curr + 1; next < coins.Length; next++)
-        {
-            if (coins[curr] + coins[next] == target)
-            {
-                return new int[] { curr, next };
-            }
-        }
-    }
+        var target = GetTarget();
+        var roll = GetRoll();
 
-    return [];
+        Console.WriteLine($"Roll a number greater than {target} to win!");
+        Console.WriteLine($"You rolled a {roll}");
+        Console.WriteLine(WinOrLose(target, roll));
+
+        play = ShouldPlay();
+    }
 }
+
+bool ShouldPlay()
+{
+    Console.WriteLine("Would you like to play? (Y/N)");
+    var input = Console.ReadLine();
+
+    if (string.IsNullOrWhiteSpace(input))
+        return false;
+        
+    var c = input.Trim()[0];
+    Console.Clear();
+    return c.ToString().ToLower() == "y";
+}
+int GetTarget()
+{ return random.Next(1, 6); }
+int GetRoll()
+{ return random.Next(1, 7); }
+string WinOrLose(int target, int roll)
+{    return roll > target ? "You win!" : "You lose.";}
