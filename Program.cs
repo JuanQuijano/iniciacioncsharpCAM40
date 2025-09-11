@@ -8,10 +8,10 @@ CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 int[] schedule = [800, 1200, 1600, 2000];
 var diff = 0;
 
-AdjusteTimes(schedule, 6, -6);
-DisplayTimes(schedule);
+AdjusteTimes(6, -6);
+DisplayTimes();
 
-void AdjusteTimes(int[] times, int currentGMT, int newGMT)
+void AdjusteTimes(int currentGMT, int newGMT)
 {
 
     if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
@@ -23,11 +23,11 @@ void AdjusteTimes(int[] times, int currentGMT, int newGMT)
 
 
 }
-void DisplayTimes(int[] times)
+void DisplayTimes()
 {
-    for (int i = 0; i < times.Length; i++)
+    for (int i = 0; i < schedule.Length; i++)
     {
-        int newTime = ((times[i] + diff)) % 2400;
-        Console.WriteLine($"{times[i]} -> {newTime}");
+        int newTime = (schedule[i] + diff) % 2400;
+        Console.WriteLine($"{schedule[i]} -> {newTime}");
     }
 }
