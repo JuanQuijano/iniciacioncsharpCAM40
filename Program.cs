@@ -6,12 +6,18 @@ CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
 
-var numero1 = 3;
-var numero2 = 4;
+string input = "En un lugar de la mancha de cuyo nombre no quiero acordarme";
 
-Console.WriteLine($"La suma de {numero1} más {numero2} es igual a {SumaDosNumeros(numero1, numero2)} ");
+Console.WriteLine(input);
+Console.WriteLine(ReverseWord(input));
 
-int SumaDosNumeros(int numero1, int numero2)
-{ 
-    return numero1 + numero2;
+
+string ReverseWord(string word) 
+{
+    string result = "";
+    for (int i = word.Length - 1; i >= 0; i--) 
+    {
+        result += word[i];
+    }
+    return result;
 }
