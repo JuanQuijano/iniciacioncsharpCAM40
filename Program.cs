@@ -6,18 +6,28 @@ CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
 
-string input = "En un lugar de la mancha de cuyo nombre no quiero acordarme";
+string[] words = {"racecar" ,"talented", "deified", "tent", "tenet"};
 
-Console.WriteLine(input);
-Console.WriteLine(ReverseWord(input));
-
-
-string ReverseWord(string word) 
+Console.WriteLine("Is it a palindrome?");
+foreach (string word in words)
 {
-    string result = "";
-    for (int i = word.Length - 1; i >= 0; i--) 
+    Console.WriteLine($"{word}: {IsPalindrome(word)}");
+}
+
+bool IsPalindrome(string word) 
+{
+    int start = 0;
+    int end = word.Length - 1;
+
+    while (start < end) 
     {
-        result += word[i];
+        if (word[start] != word[end]) 
+        {
+            return false;
+        }
+        start++;
+        end--;
     }
-    return result;
+
+    return true;
 }
