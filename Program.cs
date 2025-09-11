@@ -6,28 +6,36 @@ CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
 CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
 
-string[] words = {"racecar" ,"talented", "deified", "tent", "tenet"};
 
-Console.WriteLine("Is it a palindrome?");
-foreach (string word in words)
+
+int target = 60;
+int[] coins = new int[] {5, 5, 50, 25, 25, 10, 5};
+int[] result = TwoCoins(coins, target);
+
+
+if (result.Length == 0)
 {
-    Console.WriteLine($"{word}: {IsPalindrome(word)}");
+    Console.WriteLine("No two coins make change");
+}
+else
+{
+    Console.WriteLine($"Change found at positions {result[0]} and {result[1]}");
 }
 
-bool IsPalindrome(string word) 
-{
-    int start = 0;
-    int end = word.Length - 1;
 
-    while (start < end) 
+
+int[] TwoCoins(int[] coins, int target)
+{
+    for (int curr = 0; curr < coins.Length; curr++)
     {
-        if (word[start] != word[end]) 
+        for (int next = curr + 1; next < coins.Length; next++)
         {
-            return false;
+            if (coins[curr] + coins[next] == target)
+            {
+                return new int[] { curr, next };
+            }
         }
-        start++;
-        end--;
     }
 
-    return true;
+    return [];
 }
