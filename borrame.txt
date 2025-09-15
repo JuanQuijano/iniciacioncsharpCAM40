@@ -1,2 +1,0 @@
-Hola desde borrame txt
-Este cambio viene de la rama funcion1
