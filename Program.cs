@@ -1,24 +1,20 @@
-﻿public class Person
-{
-    public string Name { get; set; } = string.Empty;
-    public int Age { get; set; } = 0;
+﻿using System;
 
-    // Methods
-    public void Display()
+public static class IntExtensions
+{
+    public static bool IsNull(this int numero)
     {
-        Console.Clear();
-        Console.WriteLine($"Name: {Name}, Age: {Age}");
+        return numero == null;
     }
 }
 
+
 class Program
 {
-    static void Main()
+    static void Main(string[] args)
     {
-        Person person = new Person();
-        person.Name = "Alice";
-        person.Age = 27;
-        
-        person.Display();
+        var cantidad = 0;
+        Console.WriteLine(cantidad.IsNull());
+
     }
 }
