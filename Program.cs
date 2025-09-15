@@ -1,44 +1,52 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-Console.Clear();
-CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
-CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
+﻿using System.Globalization;
 
-
-
-var calculadora = new Calculadora();
-
-Console.WriteLine(calculadora.Sumar());
-Console.WriteLine(calculadora.Multiplicar());
-
-
-calculadora = new Calculadora(10, 20);
-Console.WriteLine(calculadora.Sumar());
-Console.WriteLine(calculadora.Multiplicar());
-
-
-public class Calculadora
+public class Person
 {
-    int numero1 { get; set; }
-    int numero2 { get; set; }
+    public string PersonName { get; set; }
+    public string PersonAge { get; set; }
+    public static string defaultName;
+    public static string defaultAge;
 
-    public Calculadora(int numero1 = 0, int numero2 = 0)
-    {
-        this.numero1 = numero1;
-        this.numero2 = numero2;
+    static Person()
+    { 
+        defaultName = "unknown";
+        defaultAge = "unknown";
     }
 
-    public int Sumar()
+    public Person()
     {
-        return numero1 + numero2;
+        PersonName = "unknown";
+        PersonAge = "unknown";
     }
-    public int Multiplicar()
+
+    public Person(string name)
     {
-        return numero1 * numero2;
+        PersonName = name;
+        PersonAge = "unknown";
+    }
+
+    public Person(string name, int age)
+    {
+        PersonName = name;
+        PersonAge = age.ToString();
     }
 }
 
+static class Program
+{
+    // the Main method is the entry point of the program.
+    static void Main()
+    {
+        Console.Clear();
+        CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("es-ES");
+        CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("es-ES");
 
+        Person person1 = new Person();
+        Person person2 = new Person("Jane Doe");
+        Person person3 = new Person("John Doe", 30);
 
-
+        Console.WriteLine($"Person 1 Name: {person1.PersonName} Age: {person1.PersonAge}");
+        Console.WriteLine($"Person 2 Name: {person2.PersonName} Age: {person2.PersonAge}");
+        Console.WriteLine($"Person 3 Name: {person3.PersonName} Age: {person3.PersonAge}");
+    }
+}
