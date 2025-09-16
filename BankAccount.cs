@@ -5,11 +5,11 @@ namespace Classes_M2;
 public class BankAccount
 {
     private static int s_nextAccountNumber;
-    public static double InterestRate;
-    public int AccountNumber { get; }
-    public string CustomerId { get; }
+    private static double InterestRate;
+    private int AccountNumber { get; }
+    private string CustomerId { get; }
     public double Balance { get; private set; } = 0;
-    public string AccountType { get; set; } = "Checking";
+    private string AccountType { get; set; } = "Checking";
     
 
     static BankAccount()
