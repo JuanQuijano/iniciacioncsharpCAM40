@@ -1,39 +1,37 @@
-using System;
 
-namespace Classes_M2;
-
-public class BankCustomer
-{
-    private static int s_nextCustomerId;
-    public string FirstName { get; set; } = "Tim";
-    public string LastName { get; set; } = "Shao";
-    public readonly string CustomerId;
-
-    static BankCustomer()
-    {
-        Random random = new Random();
-        s_nextCustomerId = random.Next(10000000, 20000000);
-    }
-    public BankCustomer(string firstName, string lastName)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-        this.CustomerId = (s_nextCustomerId++).ToString("D10");
-    }
-
-
-    public void UpdateName(string firstName, string lastName)
-    {
-        FirstName = firstName;
-        LastName = lastName;
-    }
-    public string ReturnFullName()
-    {
-        return $"{FirstName} {LastName}";
-    }
-
-    public string DisplayCustomerInfo()
-    {
-        return $"{ReturnFullName()} {CustomerId}";
-    }
-}
+ using System;
+    
+ namespace Classes_M3;
+    
+ public partial class BankCustomer
+ {
+     private static int s_nextCustomerId;
+     private string _firstName = "Tim";
+     private string _lastName = "Shao";
+     public readonly string CustomerId;
+    
+     static BankCustomer()
+     {
+         Random random = new Random();
+         s_nextCustomerId = random.Next(10000000, 20000000);
+     }
+    
+     public BankCustomer(string firstName, string lastName)
+     {
+         FirstName = firstName;
+         LastName = lastName;
+         this.CustomerId = (s_nextCustomerId++).ToString("D10");
+     }
+    
+     public string FirstName
+     {
+         get { return _firstName; }
+         set { _firstName = value; }
+     }
+    
+     public string LastName
+     {
+         get { return _lastName; }
+         set { _lastName = value; }
+     }
+ }
